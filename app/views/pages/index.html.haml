@@ -1,1 +1,13 @@
 %h1 Hello, Plushka!
+.carousel.slide{'data-ride' => 'carousel'}
+  .carousel-inner
+    .item
+      %img{:src => 'assets/slide-01.jpg', :alt => ''}
+    .item
+      %img{:src => 'assets/slide-02.jpg', :alt => ''}
+    .item
+      %img{:src => 'assets/slide-03.jpg', :alt => ''}
+    .item
+      %img{:src => 'assets/slide-03.jpg', :alt => ''}
+    %a.left.carousel-control{:href => '#', 'data-slide' => 'prev'}
+    %a.right.carousel-control{:href => '#', 'data-slide' => 'next'} 
