@@ -1,12 +1,10 @@
+- item_class = "active" 
 .carousel.slide#carousel-hot{'data-ride' => 'carousel'}
   .carousel-inner
-    .item.active
-      %img{:src => 'http://cs418622.vk.me/v418622714/ef3/cVBVSycRtRo.jpg', :alt => ''}
-    .item
-      %img{:src => 'http://cs418622.vk.me/v418622714/f05/738l5gdAkKY.jpg', :alt => ''}
-    .item
-      %img{:src => 'http://cs418622.vk.me/v418622714/f0e/uRLTewEF9bY.jpg', :alt => ''}
-    .item
-      %img{:src => 'http://cs317619.vk.me/v317619714/9acc/YAEo1Gd7OWk.jpg', :alt => ''}
+    - @images.each do |image|  
+      .item{:class => item_class}
+        %img{:src => image.image_url, :alt => ''}
+      - item_class = ""
+
   %a.left.carousel-control{:href => '#carousel-hot', 'data-slide' => 'prev'}
   %a.right.carousel-control{:href => '#carousel-hot', 'data-slide' => 'next'}
