@@ -1,0 +1,20 @@
+%html
+  %head>
+    %title Magicpoint - творческая мастерская
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true 
+    = csrf_meta_tags
+  .navbar
+    .navbar-inner
+      %a.brand{:href => '/'} Magic Point
+      %ul.nav
+        %li
+          %a{:href => '/gallery'} Галерея
+        %li
+          %a{:href => '/master'} Мастер-классы
+        %li
+          %a{:href => '/terms'} Условия
+        %li
+          %a{:href => '/contact'} Контакты
+
+  = yield 
