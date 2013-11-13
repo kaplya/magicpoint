@@ -9,6 +9,15 @@ Magicpoint::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pages#index'
 
+  get 'gallery' => 'pages#gallery'
+
+  get 'master' => 'pages#master'
+
+  get 'terms' => 'pages#terms'
+
+  get 'contact' => 'pages#contact'
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
