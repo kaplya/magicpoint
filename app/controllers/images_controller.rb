@@ -1,10 +1,11 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_imageable, only: [:new, :create, :index, :destroy]
 
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @images = @imageable.images
   end
 
   # GET /images/1
@@ -14,7 +15,7 @@ class ImagesController < ApplicationController
 
   # GET /images/new
   def new
-    @image = Image.new
+    @image = @imageable.images.new
   end
 
   # GET /images/1/edit
@@ -24,11 +25,11 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(image_params)
+    @image = @imageable.images.new(image_params)
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
+        format.html { redirect_to url_for([@imageable, @image]), notice: 'Image was successfully created.' }
         format.json { render action: 'show', status: :created, location: @image }
       else
         format.html { render action: 'new' }
@@ -42,7 +43,7 @@ class ImagesController < ApplicationController
   def update
     respond_to do |format|
       if @image.update(image_params)
-        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
+        format.html { redirect_to imageable_images(@imageable), notice: 'Image was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +57,7 @@ class ImagesController < ApplicationController
   def destroy
     @image.destroy
     respond_to do |format|
-      format.html { redirect_to images_url }
+      format.html { redirect_to item_images_path(@imageable) }
       format.json { head :no_content }
     end
   end
@@ -65,6 +66,10 @@ class ImagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_image
       @image = Image.find(params[:id])
+    end
+
+    def set_imageable
+      @imageable = Item.find(params[:imageable_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

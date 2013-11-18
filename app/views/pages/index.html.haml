@@ -1,12 +1,14 @@
 
 
 - item_class = "active" 
-.carousel.slide#carousel-hot{'data-ride' => 'carousel'}
-  .carousel-inner
-    - @images.each do |image|  
-      .item{:class => item_class}
-        %img{:src => image.image_url, :alt => ''}
-      - item_class = ""
+- if @images.any?
+  .carousel.slide#carousel-hot{'data-ride' => 'carousel'}
+    .carousel-inner
+      - @images.each do |image|  
+        .item{:class => item_class}
+          %img{:src => image.image_url, :alt => ''}
+        - item_class = ""
 
-  %a.left.carousel-control{:href => '#carousel-hot', 'data-slide' => 'prev'}
-  %a.right.carousel-control{:href => '#carousel-hot', 'data-slide' => 'next'}
+    %a.left.carousel-control{:href => '#carousel-hot', 'data-slide' => 'prev'}
+    %a.right.carousel-control{:href => '#carousel-hot', 'data-slide' => 'next'}
+  

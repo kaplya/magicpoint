@@ -12,9 +12,9 @@
       %td= image.description
       %td= image.image_url
       %td= link_to 'Show', image
-      %td= link_to 'Edit', edit_image_path(image)
-      %td= link_to 'Destroy', image, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Edit', [:edit, @imageable, image]
+      %td= link_to 'Destroy', [@imageable, image], :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Image', new_image_path
+= link_to 'New Image', new_imageable_image_path 

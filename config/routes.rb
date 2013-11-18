@@ -1,7 +1,16 @@
 Magicpoint::Application.routes.draw do
+  
+
+  concern :imageable do
+    resources :images
+  end
+
+  resources :items, concerns: :imageable, as: :imageable
+
+
   resources :images
 
-  resources :users
+  resources :users, concerns: :imageable
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
